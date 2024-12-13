@@ -10,6 +10,7 @@ This flow assumes auto-generated release notes will include JIRA issue keys. Thi
 
 |Input|Description|Example|
 |---|---|---|
+|`version_name`|Name of the version to create|${{ github.ref_name }}|
 |`jira_server`|JIRA server URL.|`https://company.atlassian.net`|
 |`jira_project`|JIRA project key.|`PRJ`|
 |`jira_user`|JIRA user with project admin permission.|`apiuser@company.com`|
@@ -32,6 +33,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: Medsien/release-to-jira@main
         with:
+          version_name: prefix-${{ github.ref_name }}
           jira_server: 'https://company.atlassian.net'
           jira_project: 'PRJ'
           jira_user: 'user@company.com'
